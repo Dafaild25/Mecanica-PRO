@@ -1,4 +1,4 @@
-const Atrapar = document.getElementById('formulario-entrada')
+const Atrapar = document.getElementById('formulario-entrada');
 
 Atrapar.addEventListener('submit', e=>{
     e.preventDefault();
