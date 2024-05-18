@@ -12,6 +12,25 @@
     <title>Mecanica</title>
 </head>
 <body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDmcNGxG8RaJb801784o428MVlB-vCZBC8",
+          authDomain: "mecanica-crud.firebaseapp.com",
+          projectId: "mecanica-crud",
+          storageBucket: "mecanica-crud.appspot.com",
+          messagingSenderId: "617641396224",
+          appId: "1:617641396224:web:dcd726762cf9cd2b1970e5"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
     <header>
         <h1 class="alert alert-dark" >
             <b>Mecánica: </b>Registro de vehiculos averiados
