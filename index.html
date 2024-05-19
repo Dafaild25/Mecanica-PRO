@@ -81,7 +81,6 @@
                 </form>
             </div>
         </div>
-
     </main>
     <div class="row">
         <div class="col-md-6" id="Problemas">
@@ -161,7 +160,7 @@
                 });
 
                 tarjetas.innerHTML = html;
-
+                // LISTA DE BOTONES PARA BORRAR
                 const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
 
                 btnsBorrar.forEach(btn=>{
@@ -170,6 +169,7 @@
                     });
                 });
 
+                // LISTA DE BOTONES PARA EDITAR
                 const btnsEditar= tarjetas.querySelectorAll('.btn-editar')
                 btnsEditar.forEach(btn=>{
                     btn.addEventListener('click',async (e) =>{
@@ -177,6 +177,7 @@
                         const recuperado = doc.data()
 
                         mecanica['cedula'].value = recuperado.cedula
+                        mecanica['nombre'].value = recuperado.nombre
 
                     })
                 })
