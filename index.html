@@ -150,15 +150,15 @@
         window.addEventListener('DOMContentLoaded',async ()=> {
             onSnapshot(collection(db,'Vehiculos'),(querySnapshot) =>{
                 let html = ''
-            querySnapshot.forEach(doc => {
+                querySnapshot.forEach(doc => {
 
-                html += `<div>
-                    <h6>${doc.data().cedula} </h6>
-                    
-                    </div> ` 
-            })
+                    html += `<div>
+                        <h6>${doc.data().cedula} </h6>
+                        
+                        </div> ` 
+                })
 
-            tarjetas.innerHTML = html
+                tarjetas.innerHTML = html
 
             })
 
