@@ -47,24 +47,19 @@
                             <label for=""> <b>Placas: </b></label>
                             <input type="text" class="form-control" placeholder="Ejem: XXX-000" id="placa">
                             <br>
-                            <label for=""> <b>Llanta de emergencia: </b></label>
-                            <select name="" id="llanta" class="form-control" >
-                                <option value="">--Seleccione--</option>
-                                <option value="">SI</option>
-                                <option value="">NO</option>
-
-                            </select>
+                            <label for=""> <b>celular: </b></label>
+                            <input type="text" class="form-control" placeholder="Ejemp: 0998461862" id="celular">
                             <br>
                         </div>
                         <div class="col-md-4">
                             <label for=""> <b>Apellido: </b></label>
                             <input type="text" class="form-control" placeholder="AIMACAÑA" id="apellido">
                             <br>
-                            <label for=""> <b>Transmision: </b></label>
-                            <input type="text" class="form-control" placeholder="Ejem: 0504126962"id="trans" >
+                            <label for=""> <b>Correo: </b></label>
+                            <input type="email" class="form-control" placeholder="david@gmail.com"id="correo" >
                             <br>
                             <label for=""> <b>Fecha: </b></label>
-                            <input type="date" class="form-control" id="fecha">
+                            <input type="datetime" class="form-control" id="fecha">
                             <br>
                         </div>
                         <div class="row">
@@ -75,7 +70,7 @@
                             <br><br>
                         </div>
                         <br><br>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary" >Agregar</button>
                             </div>
@@ -134,9 +129,9 @@
                 apellido:  mecanica.apellido.value,
                 modelo : mecanica.modelo.value,
                 placa : mecanica.placa.value,
-                transmision : mecanica.trans.value,
+                transmision : mecanica.correo.value,
                 Kilometraje : mecanica.kilo.value,
-                llanta : mecanica.llanta.value,
+                llanta : mecanica.celular.value,
                 fecha : mecanica.fecha.value,
                 descripcion : mecanica.desc.value
             });
@@ -153,7 +148,7 @@
                 querySnapshot.forEach(doc => {
 
                     html += `<div class="card card-body mt-2">
-                        <h6>${doc.data().cedula} </h6>
+                        <h6>${doc.data().fecha} </h6>
                         <p>${doc.data().descripcion}</p>
                         <div>
                             <button class="btn btn-danger">Borrar</button>
