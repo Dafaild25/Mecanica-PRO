@@ -120,39 +120,24 @@
         // hago que el formulario sea una lista 
 
         const mecanica = document.getElementById("formulario-entrada");
-
-        // creo una funcion para agregar
-        const guardarDatos = ( cedula,nombre,apellido,modelo,placa,transmision,kilometraje,llanta,fecha,descripcion) => db.collection("Vehiculos").doc().set({
-            cedula ,
-            nombre,
-            apellido,
-            modelo,
-            placa,
-            transmision,
-            kilometraje,
-            llanta,
-            fecha,
-            descripcion,
-        });
-
-
+        
         mecanica.addEventListener("submit", async(e)=>{
             e.preventDefault();
-            const cedula = mecanica["cedula"];
-            const nombre = mecanica["nombre"];
-            const apellido=  mecanica["apellido"];
-            const modelo = mecanica["modelo"];
-            const placa = mecanica["placa"];
-            const transmision = mecanica["trans"];
-            const Kilometraje = mecanica["kilo"];
-            const llanta = mecanica["llanta"];
-            const fecha = mecanica["fecha"];
-            const descripcion = mecanica["des"];
-            
-
-            await guardarDatos(cedula, nombre, apellido, modelo, placa, transmision, Kilometraje, llanta, fecha, descripcion);
+            await addDoc(collection(db,"Vehiculos"),{
+                cedula : mecanica.cedula.value,
+                nombre : mecanica.nombre.value,
+                apellido:  mecanica.apellido.value,
+                modelo : mecanica.modelo.value,
+                placa : mecanica.placa.value,
+                transmision : mecanica.trans.value,
+                Kilometraje : mecanica.kilo.value,
+                llanta : mecanica.llanta.value,
+                fecha : mecanica.fecha.value,
+                descripcion : mecanica.desc.value
+            });
             mecanica.reset();
-        } );
+        });
+        
 
     </script>
     
