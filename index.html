@@ -137,11 +137,13 @@
         const mostrar = () => getDocs(collection(db,'Vehiculos'))
         // para borrar datos 
         const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id));
-        let html
+
+        
 
         window.addEventListener('DOMContentLoaded',async ()=> {
             onSnapshot(collection(db,'Vehiculos'),(querySnapshot) =>{
-                let html = ''
+                let html = '';
+
                 querySnapshot.forEach(doc => {
 
                     html += `<div class="card card-body mt-2">
@@ -155,16 +157,18 @@
                         </div>` ;
                 });
 
-                tarjetas.innerHTML = html
-                
-            })
-            
-            const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
+                tarjetas.innerHTML = html;
+
+                const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
                 btnsBorrar.forEach(btn=>{
                     btn.addEventListener('click',({target:{dataset}}) =>{
                         borrarProblemas(dataset.id)
                     })
                 })
+                
+            })
+            
+            
 
             
         })
