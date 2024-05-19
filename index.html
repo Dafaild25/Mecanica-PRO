@@ -104,7 +104,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
         
@@ -144,15 +144,21 @@
         });
 
         // recorrer datos
-        const mostrar = () => db.collection('Vehiculos').get();
-        window.addEventListener('DOMContentLoaded',async (e)=>{
+        const mostrar = () => getDocs(collection(db,'Vehiculos'))
+        let html
+
+        window.addEventListener('DOMContentLoaded',async (e)=> {
             const consulta = await mostrar();
+
+            let html = ''
             consulta.forEach(doc => {
-                tarjetas.innerHTML += `<div> 
-                    ${doc.data().cedula}
-                </div>`
+                const task = doc.data()
+                html += `
+                    <div> ${task.cedula} </div>        
+                `
             })
         })
+        tarjetas.innerHTML = html
     </script>
     
 </body>
