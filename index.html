@@ -123,7 +123,7 @@
 
         // creo una funcion para agregar
         const guardarDatos = ( cedula,nombre,apellido,modelo,placa,transmision,kilometraje,llanta,fecha,descripcion) => db.collection("Vehiculos").doc().set({
-            cedula,
+            cedula : cedula,
             nombre,
             apellido,
             modelo,
