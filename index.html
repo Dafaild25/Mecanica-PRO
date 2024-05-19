@@ -159,8 +159,13 @@
                 })
 
                 tarjetas.innerHTML = html
-                const btnBorrar= tarjetas.querySelectorAll('btn-borrar')
-                console.log(btnBorrar)
+                const btnsBorrar= tarjetas.querySelectorAll('btn-borrar')
+                btnsBorrar.forEach(btn=>{
+                    btn.addEventListener('click',() =>{
+                        console.log('Borrando')
+                    })
+                })
+                
             })
 
             
