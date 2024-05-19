@@ -120,7 +120,7 @@
         // funcion para agregar
 
         const mecanica = document.getElementById("formulario-entrada");
-        mecanica.addEventListener("submit", async(e) => {
+        mecanica.addEventListener("submit", async(e)=>{
             e.preventDefault();
             await addDoc(collection(db,"Vehiculos"),{
                 cedula : mecanica.form-cedula.value,
