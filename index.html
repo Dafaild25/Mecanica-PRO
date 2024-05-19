@@ -147,18 +147,21 @@
         const mostrar = () => getDocs(collection(db,'Vehiculos'))
         let html
 
-        window.addEventListener('DOMContentLoaded',async (e)=> {
-            const consulta = await mostrar();
+        window.addEventListener('DOMContentLoaded',async ()=> {
+            const querySnapshot = await mostrar();
 
             let html = ''
-            consulta.forEach(doc => {
-                const task = doc.data()
-                html += `
-                    <div> ${task.cedula} </div>        
-                `
+            querySnapshot.forEach(doc => {
+
+                html += `<div>
+                    <h3>${doc.data().cedula} </h3>
+                    
+                    </div> ` 
             })
+
+            tarjetas.innerHTML = 'html'
         })
-        tarjetas.innerHTML = html
+        
     </script>
     
 </body>
