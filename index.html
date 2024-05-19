@@ -165,8 +165,8 @@
                 const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
 
                 btnsBorrar.forEach(btn=>{
-                        btn.addEventListener('click',({target:{dataset}}) =>{
-                            borrarProblemas(dataset.id)
+                        btn.addEventListener('click',(event) =>{
+                            borrarProblemas(event.target.dataset.id)
                     })
                 })
 
