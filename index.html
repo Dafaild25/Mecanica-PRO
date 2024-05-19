@@ -151,7 +151,7 @@
                         <h6>${doc.data().fecha} </h6>
                         <p>${doc.data().descripcion}</p>
                         <div>
-                            <button class="btn btn-danger">Borrar</button>
+                            <button class="btn btn-danger" id="btn-borrar">Borrar</button>
                             <button class="btn btn-success">Editar</button>
 
                         </div> 
@@ -159,7 +159,8 @@
                 })
 
                 tarjetas.innerHTML = html
-
+                const btnBorrar= tarjetas.querySelectorAll('btn-borrar')
+                console.log(btnBorrar)
             })
 
             
