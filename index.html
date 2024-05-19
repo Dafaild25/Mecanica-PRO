@@ -174,7 +174,7 @@
                 btnsEditar.forEach(btn=>{
                     btn.addEventListener('click',async (e) =>{
                         const documento = await unaTarjeta(e.target.dataset.id)
-                        const recuperado = doc.data()
+                        const recuperado = documento.data()
 
                         mecanica['cedula'].value = recuperado.cedula
                         mecanica['nombre'].value = recuperado.nombre
