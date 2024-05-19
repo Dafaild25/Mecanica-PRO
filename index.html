@@ -83,7 +83,7 @@
         </div>
     </main>
     <div class="row">
-        <div class="col-md-6" id="Problemas">
+        <div class="col-md-12" id="Problemas">
 
         </div>
     </div>
@@ -177,7 +177,7 @@
                 querySnapshot.forEach(doc => {
                     const datos = doc.data()
 
-                    html += `<div class="card card-body mt-2">
+                    html += ` <div class = "col-md-6"> <div class="card card-body mt-2">
                         <h6>${datos.fecha} </h6>
                         <p>${datos.descripcion}</p>
                         <div>
@@ -185,7 +185,8 @@
                             <button class= "btn-editar" data-id ="${doc.id}">Editar</button>
 
                         </div>
-                        </div>` ;
+                        </div>
+                        </div>`  ;
                 });
 
                 tarjetas.innerHTML = html;
