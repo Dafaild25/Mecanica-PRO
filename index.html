@@ -141,14 +141,15 @@
         
 
         window.addEventListener('DOMContentLoaded',async ()=> {
-            onSnapshot(collection(db,'Vehiculos'),(querySnapshot) =>{
+            const querySnapshot= await mostrar()
                 let html = '';
 
                 querySnapshot.forEach(doc => {
+                    const datos = doc.data()
 
                     html += `<div class="card card-body mt-2">
-                        <h6>${doc.data().fecha} </h6>
-                        <p>${doc.data().descripcion}</p>
+                        <h6>${datos.fecha} </h6>
+                        <p>${datos.descripcion}</p>
                         <div>
                             <button class="btn-borrar" data-id="${doc.id}">Borrar</button>
                             <button class="btn btn-success">Editar</button>
