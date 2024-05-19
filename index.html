@@ -151,7 +151,7 @@
                         <h6>${doc.data().fecha} </h6>
                         <p>${doc.data().descripcion}</p>
                         <div>
-                            <button class="btn btn-danger" id="btn-borrar">Borrar</button>
+                            <button class="btn btn-danger" class="btn-borrar" data-id="${doc.id}">Borrar</button>
                             <button class="btn btn-success">Editar</button>
 
                         </div> 
@@ -161,8 +161,8 @@
                 tarjetas.innerHTML = html
                 const btnsBorrar= tarjetas.querySelectorAll('btn-borrar')
                 btnsBorrar.forEach(btn=>{
-                    btn.addEventListener('click',() =>{
-                        console.log('Borrando')
+                    btn.addEventListener('click',(event) =>{
+                        console.log(event.target.dataset.id)
                     })
                 })
                 
