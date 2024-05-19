@@ -9,11 +9,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="estilos.css">
-        
+
     <title>Mecanica</title>
 </head>
 <body>
-    
+
     <header>
         <h1 class="alert alert-dark" >
             <b>Mecánica: </b>Registro de vehiculos dañados
@@ -23,7 +23,7 @@
         <div class="container">
             <div class=" alert alert-secondary">
                 <p>
-                    <b>Lorem ipsum dolor sit amet consectetur adipisicing elit. A ab debitis praesentium eius autem suscipit excepturi, officiis recusandae atque dolores repellendus quod, laudantium provident consectetur exercitationem quae. Sunt, nulla deserunt.</b> 
+                    <b>Lorem ipsum dolor sit amet consectetur adipisicing elit. A ab debitis praesentium eius autem suscipit excepturi, officiis recusandae atque dolores repellendus quod, laudantium provident consectetur exercitationem quae. Sunt, nulla deserunt.</b>
                 </p>
             </div>
             <div class="formulario">
@@ -74,7 +74,7 @@
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary" >Agregar</button>
                             </div>
-                        
+
                         </div>
                         <div class="row">
                             <div class="col-md-6" id="Problemas">
@@ -97,7 +97,7 @@
         import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-        
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyDmcNGxG8RaJb801784o428MVlB-vCZBC8",
@@ -107,15 +107,15 @@
           messagingSenderId: "617641396224",
           appId: "1:617641396224:web:dcd726762cf9cd2b1970e5"
         };
-      
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // hago que el formulario sea una lista 
+        // hago que el formulario sea una lista
         const mecanica = document.getElementById("formulario-entrada");
         const tarjetas = document.getElementById("Problemas")
-        
+
         mecanica.addEventListener("submit", async(e)=>{
             e.preventDefault();
             await addDoc(collection(db,"Vehiculos"),{
@@ -133,15 +133,17 @@
             mecanica.reset();
         });
 
-        // recorrer datos
+        // para mapear los datos
         const mostrar = () => getDocs(collection(db,'Vehiculos'));
-        // para borrar datos 
+        // funcion para escuchar
+        const escuchar = (llamado) => onSnapshot(collection(db,'Vehiculos'), llamado);
+        // para borrar datos
         const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id));
 
-        
+
 
         window.addEventListener('DOMContentLoaded',async ()=> {
-            const querySnapshot= await mostrar()
+            escuchar((querySnapshot) => {
                 let html = '';
 
                 querySnapshot.forEach(doc => {
@@ -154,31 +156,33 @@
                             <button class="btn-borrar" >Borrar</button>
                             <button class="btn btn-success">Editar</button>
 
-                        </div> 
+                        </div>
                         </div>` ;
                 });
 
                 tarjetas.innerHTML = html;
 
                 const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
-                
-                btnsBorrar.forEach(btn=>{
-                    btn.addEventListener('click',({target:{dataset}}) =>{
-                        borrarProblemas(dataset.id)
-                })
-            })
-                
-        })
-            
-            
 
-            
-        
-        
-        
-        
-        
+                btnsBorrar.forEach(btn=>{
+                        btn.addEventListener('click',({target:{dataset}}) =>{
+                            borrarProblemas(dataset.id)
+                    })
+                })
+
+            })
+
+        })
+
+
+
+
+
+
+
+
+
     </script>
-    
+
 </body>
 </html>
