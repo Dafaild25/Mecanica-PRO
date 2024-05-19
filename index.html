@@ -135,7 +135,7 @@
 
         // para mapear los datos
         const mostrar = () => getDocs(collection(db,'Vehiculos'));
-        // funcion para escuchar
+        // funcion para escuchar DATOS RECIENTES
         const escuchar = (llamado) => onSnapshot(collection(db,'Vehiculos'), llamado);
         // para borrar datos
         const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id));
@@ -153,7 +153,7 @@
                         <h6>${datos.fecha} </h6>
                         <p>${datos.descripcion}</p>
                         <div>
-                            <button class="btn-borrar" >Borrar</button>
+                            <button class="btn-borrar" data-id ="${doc.id}">Borrar</button>
                             <button class="btn btn-success">Editar</button>
 
                         </div>
