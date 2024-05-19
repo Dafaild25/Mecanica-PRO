@@ -72,7 +72,7 @@
                         <br><br>
                         <div class="row mt-2">
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary" >Agregar</button>
+                                <button type="submit" class="btn btn-primary" id="btn-guardar" >Agregar</button>
                             </div>
 
                         </div>
@@ -91,7 +91,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs,getDoc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs,getDoc,updateDoc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -117,7 +117,12 @@
         const guardar = (cedula,nombre,apellido,modelo,placa,correo,kilometraje,celular,fecha,descripcion) => {addDoc( collection(db,'Vehiculos'), {
             cedula,nombre,apellido,modelo,placa,correo,kilometraje,celular,fecha,descripcion })}
         let editarStatus = false
+        let edicion= ''
 
+        //FUNCION PARA ACTUALIZAR
+        const actualizar = (id, nuevo)=> updateDoc(doc(db,'Vehiculos',id), nuevo);
+        
+        // atrapa los datos 
         mecanica.addEventListener("submit", (e)=>{
             e.preventDefault()
             
@@ -132,7 +137,24 @@
             const fecha = mecanica['fecha']
             const descripcion = mecanica['desc']
 
-            guardar(cedula.value, nombre.value, apellido.value, modelo.value, placa.value, correo.value, Kilometraje.value, celular.value, fecha.value, descripcion.value)
+            // SI PRESIONO EL BOTON EDITAR SE EDITA SI NO, NO SE VUELVE A GUARDAR
+            if(!editarStatus){
+                guardar(cedula.value, nombre.value, apellido.value, modelo.value, placa.value, correo.value, Kilometraje.value, celular.value, fecha.value, descripcion.value)
+            } else {
+                actualizar(edicion, {
+                    cedula: cedula.value,
+                    nombre: nombre.value,
+                    apellido :apellido.value,
+                    modelo : modelo.value,
+                    placa: placa.value,
+                    correo: correo.value,
+                    Kilometraje :Kilometraje.value,
+                    celular: celular.value,
+                    fecha : fecha.value,
+                    descripcion: descripcion.value
+                })
+                editarStatus= false;
+            }
 
             mecanica.reset();
         });
@@ -195,6 +217,8 @@
                         mecanica['desc'].value = recuperado.descripcion
 
                         editarStatus = true;
+                        edicion = e.target.dataset.id;
+                        mecanica['btn-guardar'].innerText = 'Actualizar'
 
 
 
