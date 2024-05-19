@@ -121,9 +121,9 @@
                 apellido:  mecanica.apellido.value,
                 modelo : mecanica.modelo.value,
                 placa : mecanica.placa.value,
-                transmision : mecanica.correo.value,
+                correo : mecanica.correo.value,
                 Kilometraje : mecanica.kilo.value,
-                llanta : mecanica.celular.value,
+                celular : mecanica.celular.value,
                 fecha : mecanica.fecha.value,
                 descripcion : mecanica.desc.value
             });
@@ -176,8 +176,18 @@
                         const documento = await unaTarjeta(e.target.dataset.id)
                         const recuperado = documento.data()
 
-                        mecanica['cedula'].value = recuperado.cedula
-                        mecanica['nombre'].value = recuperado.nombre
+                        mecanica['cedula'].value = recuperado.cedula,
+                        mecanica['nombre'].value = recuperado.nombre,
+                        mecanica['apellido'].value =recuperado.apellido,
+                        mecanica['modelo'].value = recuperado.modelo,
+                        mecanica['placa'].value= recuperado.placa,
+                        mecanica['correo'].value = recuperado.correo,
+                        mecanica['kilo'].value = recuperado.Kilometraje,
+                        mecanica['celular'].value = recuperado.celular,
+                        mecanica['fecha'].value = recuperado.fecha,
+                        mecanica['desc'].value = recuperado.descripcion
+
+
 
                     })
                 })
