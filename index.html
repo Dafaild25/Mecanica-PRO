@@ -56,7 +56,7 @@
                             <input type="text" class="form-control" placeholder="AIMACAÑA" id="apellido">
                             <br>
                             <label for=""> <b>Correo: </b></label>
-                            <input type="email" class="form-control" placeholder="david@gmail.com"id="correo" >
+                            <input type="email" class="form-control" placeholder="david@gmail.com" id="correo" >
                             <br>
                             <label for=""> <b>Fecha: </b></label>
                             <input type="date" class="form-control" id="fecha">
@@ -113,20 +113,27 @@
         const mecanica = document.getElementById("formulario-entrada");
         const tarjetas = document.getElementById("Problemas")
 
-        mecanica.addEventListener("submit", async(e)=>{
-            e.preventDefault();
-            await addDoc(collection(db,"Vehiculos"),{
-                cedula : mecanica.cedula.value,
-                nombre : mecanica.nombre.value,
-                apellido:  mecanica.apellido.value,
-                modelo : mecanica.modelo.value,
-                placa : mecanica.placa.value,
-                correo : mecanica.correo.value,
-                Kilometraje : mecanica.kilo.value,
-                celular : mecanica.celular.value,
-                fecha : mecanica.fecha.value,
-                descripcion : mecanica.desc.value
-            });
+        // funcion para guardar
+        const guardar = (cedula,nombre,apellido,modelo,placa,correo,kilometraje,celular,fecha,descripcion) => {addDoc( collection(db,'Vehiculos'), {
+            cedula,nombre,apellido,modelo,placa,correo,kilometraje,celular,fecha,descripcion })}
+        let editarStatus = false
+
+        mecanica.addEventListener("submit", (e)=>{
+            e.preventDefault()
+            
+            const cedula = mecanica['cedula']
+            const nombre = mecanica['nombre']
+            const apellido =  mecanica['apellido']
+            const modelo = mecanica['modelo']
+            const placa = mecanica['placa']
+            const correo = mecanica['correo']
+            const Kilometraje = mecanica['kilo']
+            const celular = mecanica['celular']
+            const fecha = mecanica['fecha']
+            const descripcion = mecanica['desc']
+
+            guardar(cedula.value, nombre.value, apellido.value, modelo.value, placa.value, correo.value, kilometraje.value, celular.value, fecha.value, descripcion.value)
+
             mecanica.reset();
         });
 
@@ -186,6 +193,8 @@
                         mecanica['celular'].value = recuperado.celular,
                         mecanica['fecha'].value = recuperado.fecha,
                         mecanica['desc'].value = recuperado.descripcion
+
+                        editarStatus = true;
 
 
 
