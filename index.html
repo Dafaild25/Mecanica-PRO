@@ -140,6 +140,8 @@
 
         // recorrer datos
         const mostrar = () => getDocs(collection(db,'Vehiculos'))
+        // para borrar datos 
+        const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id));
         let html
 
         window.addEventListener('DOMContentLoaded',async ()=> {
@@ -155,13 +157,13 @@
                             <button class="btn btn-success">Editar</button>
 
                         </div> 
-                        </div>` 
-                })
+                        </div>` ;
+                });
 
                 tarjetas.innerHTML = html
 
-                // para borrar datos 
-                const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id))
+                
+
                 const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
                 btnsBorrar.forEach(btn=>{
                     btn.addEventListener('click',({target:{dataset}}) =>{
