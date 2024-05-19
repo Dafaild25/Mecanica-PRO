@@ -160,6 +160,7 @@
                 tarjetas.innerHTML = html;
 
                 const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
+                
                 btnsBorrar.forEach(btn=>{
                     btn.addEventListener('click',({target:{dataset}}) =>{
                         borrarProblemas(dataset.id)
