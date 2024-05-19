@@ -150,7 +150,7 @@
             const descripcion = mecanica["des"];
             
 
-            await guardarDatos(cedula.value, nombre.value, apellido.value, modelo.value, placa.value, transmision.value, Kilometraje.value, llanta.value, fecha.value, descripcion.value);
+            await guardarDatos(cedula, nombre, apellido, modelo, placa, transmision, Kilometraje, llanta, fecha, descripcion);
             mecanica.reset();
         } );
 
