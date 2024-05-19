@@ -159,10 +159,13 @@
                 })
 
                 tarjetas.innerHTML = html
-                const btnsBorrar= tarjetas.querySelectorAll('btn-borrar')
+
+                // para borrar datos 
+                const borrarProblemas = id => deleteDoc(doc(db,'Vehiculos',id))
+                const btnsBorrar= tarjetas.querySelectorAll('.btn-borrar')
                 btnsBorrar.forEach(btn=>{
-                    btn.addEventListener('click',(event) =>{
-                        console.log(event.target.dataset.id)
+                    btn.addEventListener('click',({target:{dataset}}) =>{
+                        borrarProblemas(dataset.id)
                     })
                 })
                 
@@ -170,7 +173,7 @@
 
             
         })
-        // Cuando se agreguen datos 
+        // 
         
         
         
