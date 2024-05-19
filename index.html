@@ -94,7 +94,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc,getDocs,getDoc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -139,6 +139,8 @@
         const escuchar = (llamado) => onSnapshot(collection(db,'Vehiculos'), llamado);
         // para borrar datos
         const borrarProblemas = ide => deleteDoc(doc(db,'Vehiculos',ide));
+        //selecionar un documento 
+        const  unaTarjeta = id => getDoc(doc(db,'Vehiculos',id));
 
 
 
@@ -154,7 +156,7 @@
                         <p>${datos.descripcion}</p>
                         <div>
                             <button class="btn-borrar" data-id ="${doc.id}">Borrar</button>
-                            <button class="btn btn-success">Editar</button>
+                            <button class="btn btn-success" class= "btn-editar" data-id ="${doc.id}">Editar</button>
 
                         </div>
                         </div>` ;
@@ -167,6 +169,17 @@
                 btnsBorrar.forEach(btn=>{
                         btn.addEventListener('click',(event) =>{
                             borrarProblemas(event.target.dataset.id)
+                    });
+                });
+
+                const btnsEditar= tarjetas.querySelectorAll('.btn-editar')
+                btnsEditar.forEach(btn=>{
+                    btn.addEventListener('click',async (e) =>{
+                        const documento = await unaTarjeta(e.target.dataset.id)
+                        const recuperado = doc.data()
+
+                        mecanica['cedula'].value = recuperado.cedula
+                        
                     })
                 })
 
