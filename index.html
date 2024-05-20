@@ -186,9 +186,14 @@
 
                     html += `<div class="card card-body mt-2">
                         <h6>${datos.fecha} </h6>
-                        <p>${datos.nombre} ${datos.apellido} </p>
-                        <br>
-                        <p>${datos.descripcion}</p>
+                        <p> Cliente: ${datos.nombre} ${datos.apellido} </p>
+                        <p> Cédula: ${datos.cedula}  Celular: ${datos.celular} </p>
+                        <p> Kilmetraje: ${datos.kilometraje}  Modelo: ${modelo} </p>
+                        <p> Correo: ${datos.correo}  Placa: ${datos.placa} </p>
+
+                        <div>
+                            <p>${datos.descripcion}</p>
+                        </div>
                         <div>
                             <button class="btn-borrar" data-id ="${doc.id}">Borrar</button>
                             <button class= "btn-editar" data-id ="${doc.id}">Editar</button>
