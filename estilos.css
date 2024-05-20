@@ -9,3 +9,9 @@ h1{
     padding-right: 25%;
     background-color: black;
 }
+
+.fondo{
+    background-image: url(img/meca.jpg);
+    background-size: cover;
+    color: azure;
+}
