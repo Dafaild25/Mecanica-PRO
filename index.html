@@ -177,15 +177,17 @@
                 querySnapshot.forEach(doc => {
                     const datos = doc.data()
 
-                    html += ` <div class = "col-md-6"> <div class="card card-body mt-2">
+                    html += `<div class="card card-body mt-2">
                         <h6>${datos.fecha} </h6>
+                        <p>${datos.nombre} ${datos.apellido} </p>
+                        <br>
                         <p>${datos.descripcion}</p>
                         <div>
                             <button class="btn-borrar" data-id ="${doc.id}">Borrar</button>
                             <button class= "btn-editar" data-id ="${doc.id}">Editar</button>
 
                         </div>
-                        </div>
+                        
                         </div>`  ;
                 });
 
